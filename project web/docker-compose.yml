@@ -1,0 +1,50 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      DB_HOST: db
+      DB_NAME: shopdb
+      DB_USER: shop
+      DB_PASS: shop_pass
+    volumes:
+      # โค้ดบนเครื่องเข้าไปแทนโค้ดใน image แก้ไฟล์แล้วรีเฟรชได้เลย ไม่ต้อง build ใหม่
+      - .:/var/www/html
+      # Docker mount ตาม path จากตื้นไปลึกเสมอ volume นี้จึงซ้อนทับ uploads/ ของ bind mount ด้านบน
+      - uploads:/var/www/html/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: shopdb
+      MYSQL_USER: shop
+      MYSQL_PASSWORD: shop_pass
+      TZ: Asia/Bangkok
+    volumes:
+      - db_data:/var/lib/mysql
+      # ดูดข้อมูลจาก sql เข้า db ใหม่ใน container docker
+      - ./shirtshop_xampp.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot_pass"]
+      interval: 5s
+      retries: 20
+
+  # ลบได้นะ
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+  uploads:
