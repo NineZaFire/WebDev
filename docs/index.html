@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LMShirtShop · ลองเล่นเว็บ</title>
+<style>
+@font-face { font-family: "Plex Thai"; font-weight: 400; src: url("shop/assets/fonts/ibm-plex-sans-thai-thai-400-normal.woff2") format("woff2"); unicode-range: U+0E01-0E5B, U+200C-200D, U+25CC; }
+@font-face { font-family: "Plex Thai"; font-weight: 400; src: url("shop/assets/fonts/ibm-plex-sans-thai-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Plex Thai"; font-weight: 600; src: url("shop/assets/fonts/ibm-plex-sans-thai-thai-600-normal.woff2") format("woff2"); unicode-range: U+0E01-0E5B, U+200C-200D, U+25CC; }
+@font-face { font-family: "Plex Thai"; font-weight: 600; src: url("shop/assets/fonts/ibm-plex-sans-thai-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+:root { --blue: #1d4ed8; --ink: #0f172a; --muted: #55607a; --line: #dfe4ee; --bg: #f3f6fb; --card: #fff; --link: #1d4ed8; }
+@media (prefers-color-scheme: dark) { :root { --ink: #e5e9f2; --muted: #9aa6bd; --line: #2a3448; --bg: #0d1424; --card: #151e31; --link: #8fb0ff; } }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Plex Thai", "Leelawadee UI", Tahoma, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+header { background: linear-gradient(135deg, #1e3a8a, #1d4ed8 60%, #3b82f6); color: #fff; text-align: center; padding: 40px 16px 70px; }
+header h1 { margin: 4px 0; font-size: clamp(34px, 7vw, 52px); }
+header p { margin: 0; opacity: .9; }
+main { width: min(760px, 100% - 32px); margin: -46px auto 32px; display: flex; flex-direction: column; gap: 16px; }
+.card { background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; padding: 20px 22px; }
+.card h2 { margin: 0 0 8px; font-size: 20px; }
+.play { text-align: center; padding: 28px 22px; box-shadow: 0 8px 28px rgba(15,23,42,.12); }
+button, .btn { font: inherit; font-weight: 600; border: 0; border-radius: 12px; padding: 13px 26px; background: var(--blue); color: #fff; cursor: pointer; font-size: 18px; text-decoration: none; display: inline-block; }
+button:disabled { opacity: .6; cursor: progress; }
+.ghost { background: transparent; color: var(--link); border: 1.5px solid var(--line); font-size: 15px; padding: 8px 16px; }
+#status { margin-top: 12px; color: var(--muted); min-height: 1.6em; }
+.links { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
+.links a { color: var(--link); }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); }
+code { font-family: Consolas, monospace; font-size: .93em; }
+ul { margin: 6px 0; padding-left: 22px; }
+.muted { color: var(--muted); font-size: 14px; }
+footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 16px 24px; }
+footer a { color: var(--link); }
+</style>
+</head>
+<body>
+<header>
+  <small>040613411 Web Development</small>
+  <h1>LMShirtShop</h1>
+  <p>ร้านขายเสื้อออนไลน์ · PHP + ฐานข้อมูล · ลองเล่นได้ในเบราว์เซอร์</p>
+</header>
+<main>
+  <section class="card play">
+    <button type="button" id="start">เริ่มลองเล่นเว็บ</button>
+    <div id="status">ครั้งแรกต้องโหลดตัว PHP ประมาณ 18 MB ครั้งต่อไปจะเร็วขึ้น</div>
+    <div class="links">
+      <a href="shop/public/index.php" data-go>หน้าร้าน (ลูกค้า)</a> ·
+      <a href="shop/public/login.php" data-go>เข้าสู่ระบบ</a> ·
+      <a href="shop/admin/index.php" data-go>หลังร้าน (แอดมิน)</a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>บัญชีทดลอง</h2>
+    <table>
+      <tr><th>บทบาท</th><th>อีเมล</th><th>รหัสผ่าน</th></tr>
+      <tr><td>แอดมิน</td><td><code>admin@shirtshop.test</code></td><td><code>admin123</code></td></tr>
+      <tr><td>ลูกค้า</td><td><code>somchai@test.com</code></td><td><code>password123</code></td></tr>
+    </table>
+    <p class="muted">หรือสมัครสมาชิกใหม่เองก็ได้ · โค้ดส่วนลดลองใช้ : <code>WELCOME50</code></p>
+  </section>
+
+  <section class="card">
+    <h2>เว็บนี้ทำงานอย่างไรบน GitHub Pages</h2>
+    <ul>
+      <li>GitHub Pages รัน PHP ไม่ได้ จึงโหลด <b>PHP 8.3 แบบ WebAssembly</b> มารันในเบราว์เซอร์ผ่าน Service Worker โค้ด PHP เป็นชุดเดียวกับในโฟลเดอร์ <code>project web</code></li>
+      <li>ฐานข้อมูลใช้ <b>SQLite</b> แทน MySQL (ข้อมูลตั้งต้นชุดเดียวกับ <code>shirtshop_xampp.sql</code>) ต่างกันแค่ไฟล์ <code>includes/connect.php</code></li>
+      <li>ข้อมูลที่เพิ่ม/แก้ (สมัครสมาชิก สั่งซื้อ แนบสลิป แก้สินค้า) <b>เก็บอยู่ในเบราว์เซอร์ของคุณเท่านั้น</b> คนอื่นไม่เห็น</li>
+      <li>ตัวจริงรันด้วย Docker (<code>docker compose up</code>) หรือ XAMPP กับ MySQL ตามที่เขียนใน repo</li>
+    </ul>
+    <p style="margin:10px 0 0"><button type="button" class="ghost" id="reset">ล้างข้อมูลในเบราว์เซอร์ / เริ่มใหม่</button></p>
+  </section>
+</main>
+<footer>โค้ด : <a href="https://github.com/NineZaFire/WebDev/tree/main/project%20web">github.com/NineZaFire/WebDev</a></footer>
+
+<script>
+const startBtn = document.getElementById('start');
+const statusEl = document.getElementById('status');
+const say = (t) => { statusEl.textContent = t; };
+
+// ลงทะเบียน service worker แล้วรอให้ควบคุมหน้านี้ จากนั้นยิงคำขอแรกเพื่อให้ PHP โหลดเสร็จก่อนเปิดหน้าร้าน
+async function ready() {
+  if (!('serviceWorker' in navigator)) {
+    throw new Error('เบราว์เซอร์นี้ไม่รองรับ Service Worker (ลอง Chrome / Edge / Firefox / Safari รุ่นใหม่ และไม่ใช่โหมดส่วนตัวบางแบบ)');
+  }
+  say('กำลังติดตั้งตัวรัน PHP …');
+  await navigator.serviceWorker.register('sw.js', { scope: './' });
+  await navigator.serviceWorker.ready;
+  if (!navigator.serviceWorker.controller) {
+    await new Promise((resolve) => navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true }));
+  }
+  say('กำลังโหลด PHP และฐานข้อมูล (ครั้งแรกอาจใช้ 10–30 วินาที) …');
+  const res = await fetch('shop/index.php', { redirect: 'manual', cache: 'no-store' });
+  if (res.status >= 500) throw new Error('PHP เริ่มทำงานไม่สำเร็จ (HTTP ' + res.status + ')');
+}
+
+async function go(target) {
+  startBtn.disabled = true;
+  try {
+    await ready();
+    say('พร้อมแล้ว กำลังเปิดหน้าร้าน …');
+    location.href = target;
+  } catch (err) {
+    say('เปิดไม่สำเร็จ : ' + err.message);
+    startBtn.disabled = false;
+  }
+}
+
+startBtn.addEventListener('click', () => go('shop/public/index.php'));
+document.querySelectorAll('[data-go]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); go(a.getAttribute('href')); }));
+
+// มาจาก 404.html (เปิดลิงก์ตรงก่อนที่ service worker จะพร้อม) : ?go=shop/...
+const wanted = new URLSearchParams(location.search).get('go');
+if (wanted && /^shop\/[\w\/.\-?=&%]*$/.test(wanted)) go(wanted);
+
+document.getElementById('reset').addEventListener('click', async () => {
+  if (!confirm('ล้างข้อมูลที่ลองเล่นไว้ในเบราว์เซอร์นี้ (ออเดอร์ สมาชิก การเข้าสู่ระบบ) แล้วเริ่มจากข้อมูลตั้งต้น?')) return;
+  for (const r of await navigator.serviceWorker.getRegistrations()) await r.unregister();
+  if (indexedDB.databases) for (const db of await indexedDB.databases()) indexedDB.deleteDatabase(db.name);
+  for (const k of await caches.keys()) await caches.delete(k);
+  say('ล้างข้อมูลแล้ว');
+  setTimeout(() => location.reload(), 600);
+});
+</script>
+</body>
+</html>

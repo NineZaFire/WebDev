@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>LMShirtShop</title>
+<script>
+// เปิดลิงก์ในร้านตรง ๆ ก่อนที่ตัวรัน PHP จะพร้อม : ส่งกลับไปหน้าแรกให้ติดตั้งแล้วค่อยเปิดหน้าที่ต้องการ
+(function () {
+  var p = location.pathname, i = p.indexOf('/shop/');
+  if (i >= 0) {
+    location.replace(p.slice(0, i + 1) + '?go=' + encodeURIComponent(p.slice(i + 1) + location.search));
+  }
+})();
+</script>
+</head>
+<body style="font-family:Tahoma,sans-serif;text-align:center;padding:40px">
+<h1>404</h1>
+<p>ไม่พบหน้านี้ · <a href="/WebDev/">กลับหน้าแรก LMShirtShop</a></p>
+</body>
+</html>

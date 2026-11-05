@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Henley Tee",
+    "category": "เสื้อยืด",
+    "price": 420,
+    "description": "เสื้อยืดคอกระดุม ผ้าคอตตอนผสม",
+    "stock": { "S": 10, "M": 15, "L": 12, "XL": 6 }
+  },
+  {
+    "name": "Mandarin Collar Shirt",
+    "category": "เสื้อเชิ้ต",
+    "price": 790,
+    "description": "เสื้อเชิ้ตคอจีน ผ้าลินิน ใส่สบาย",
+    "stock": { "M": 8, "L": 8 }
+  },
+  {
+    "name": "Puffer Jacket",
+    "category": "แจ็คเก็ต",
+    "price": 1590,
+    "description": "แจ็คเก็ตบุนวม กันหนาว น้ำหนักเบา",
+    "stock": { "S": 4, "M": 6, "L": 6, "XL": 3 }
+  }
+]
