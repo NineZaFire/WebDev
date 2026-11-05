@@ -133,10 +133,12 @@ WebDev/
 
 ## <img src=".github/readme/icons/user.svg" height="22" alt=""> ผู้จัดทำ
 
-| ชื่อ | หน้าที่ |
-|---|---|
-| ชื่อ-นามสกุล | ... |
-| ชื่อ-นามสกุล | ... |
+| รหัสนักศึกษา | ชื่อ-นามสกุล | หน้าที่ | Rubric | งานหลัก |
+|---|---|---|:-:|---|
+| 6704062616052 | นันทวัฒน์ ชาติวิชิต | UX/UI Designer & Front-end Lead | 1–5 | Wireframe, System Architecture, ER Diagram, Docker, `style.css` (Selector, Mobile first), Semantic layout, Form validation, เวอร์ชัน GitHub Pages |
+| 6704062616079 | พชรพล ฉิมมุสิก | JavaScript & JSON Developer | 6–7 | จัดการ DOM ด้วย JS, QR PromptPay, แดชบอร์ดจาก JSON, ตัวอย่างราคาโปร, นำเข้าสินค้าจากไฟล์ JSON |
+| 6704062616125 | ธนโชติ ไชยศิลป์ | Back-end & Database Developer | 8–9 | ฐานข้อมูล + PDO, CRUD สินค้า/หมวดหมู่/โปร, ค้นหาและแบ่งหน้า, Session และ Cookie, ตรวจสลิป, checkout แบบ transaction |
+| 6704062616141 | ชนาธิป โกศลจิตร | Ajax & Report Developer | 10–11 | ตะกร้าด้วย XMLHttpRequest / Fetch, ระบบโปรโมชั่นและคูปอง, รายงานยอดขาย (ตาราง, กราฟ, กรองช่วงวันที่) |
 
 ## License
 
