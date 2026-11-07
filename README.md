@@ -1,7 +1,12 @@
-# <img src=".github/readme/icons/shirt.svg" height="30" alt=""> LMShirtShop : ร้านขายเสื้อออนไลน์
-
-เว็บร้านขายเสื้อออนไลน์ เขียนด้วย **PHP 8.2 + MySQL 8 (PDO)** มีสองฝั่ง : ลูกค้าเลือกซื้อเสื้อบนมือถือหรือคอมพิวเตอร์ และแอดมินจัดการร้านผ่านหลังร้าน
-รันได้ทั้ง **Docker** และ **XAMPP**
+<img width="1750" height="102" alt="image" src="https://github.com/user-attachments/assets/831058c1-86ac-4e4d-8c2a-163edd7c4794" /># <img src=".github/readme/icons/shirt.svg" height="30" alt=""> LMShirtShop : ร้านขายเสื้อออนไลน์
+เป็นฉบับปรับปรุงขึ้น Host 202.44.40.193 โดยปรับ connect ให้เข้ากับ mysql ของ Host และปรับสิทธ์ในการเข้าถึง folder upload ใหม่เป็น 777 เพื่อความสะดวก (RWX)
+```
+WebDev/
+├── project web/                 โค้ดเว็บ
+│   ├── upload/                  ปรับสิทธ์ RWX
+│      ├── products/             ทำให้ สร้าง/แก้รูป/ลบ
+│      ├── slips/                ลงรูปได้
+```
 
 > โปรเจกต์รายวิชา 040613411 Web Development
 
@@ -10,15 +15,15 @@
 **https://ninezafire.github.io/WebDev/** → กด "เริ่มลองเล่นเว็บ"
 **http://202.44.40.193/~cs6716125/webdev/projectWebdev/** หรือเริ่มลองเล่นเว็บที่นี่
 
-GitHub Pages รัน PHP เองไม่ได้ จึงใช้ PHP 8.3 แบบ WebAssembly รันในเบราว์เซอร์ และใช้ SQLite แทน MySQL (ข้อมูลตั้งต้นชุดเดียวกับ `shirtshop_xampp.sql`)
-ทุกอย่างทำงานเหมือนตัวจริง ข้อมูลที่เพิ่มหรือแก้เก็บอยู่ในเบราว์เซอร์ของแต่ละคน ครั้งแรกต้องโหลดประมาณ 18 MB
-
 | บทบาท | อีเมล | รหัสผ่าน |
 |---|---|---|
 | แอดมิน | `admin@shirtshop.test` | `admin123` |
 | ลูกค้า | `somchai@test.com` | `password123` |
 
-บัญชีข้างบนเป็นข้อมูลจำลองจากไฟล์ seed ลูกค้าคนอื่นในข้อมูลตัวอย่างใช้รหัส `password123` เหมือนกัน · โค้ดส่วนลดลองใช้ `WELCOME50`
+บัญชีข้างบนเป็นข้อมูลจำลองจากไฟล์ seed ลูกค้าคนอื่นในข้อมูลตัวอย่างใช้รหัส `password123` เหมือนกัน · โค้ดส่วนลดลองใช้ `WELCOME50` `SAVE10` `NEWMONTH100` `LM10`
+
+Docker X : permission denied
+<img width="1750" height="102" alt="image" src="https://github.com/user-attachments/assets/b8c040f4-c1f1-4084-b9e2-1b21dec32fbd" />
 
 ## <img src=".github/readme/icons/eye.svg" height="22" alt=""> ภาพหน้าจอ
 
@@ -82,42 +87,6 @@ WebDev/
 ├── docs/                        เวอร์ชัน GitHub Pages (PHP WebAssembly + SQLite)
 └── README.md
 ```
-
-## <img src=".github/readme/icons/download.svg" height="22" alt=""> ติดตั้งและรันบนเครื่อง
-
-### แบบที่ 1 : Docker
-
-1. ติดตั้ง [Docker Desktop](https://www.docker.com/products/docker-desktop/) แล้วเปิดไว้
-2. Clone แล้วเข้าโฟลเดอร์โค้ด
-
-   ```bash
-   git clone https://github.com/NineZaFire/WebDev.git
-   cd "WebDev/project web"
-   ```
-
-3. รัน (ครั้งแรกจะ import `shirtshop_xampp.sql` ให้เอง)
-
-   ```bash
-   docker compose up -d
-   ```
-
-4. เปิด http://localhost:8080 · phpMyAdmin อยู่ที่ http://localhost:8081 (ผู้ใช้และรหัสดูใน `docker-compose.yml`)
-5. หยุดด้วย `docker compose down` (ใส่ `-v` ถ้าอยากล้างฐานข้อมูลแล้วเริ่มใหม่)
-
-### แบบที่ 2 : XAMPP
-
-1. ติดตั้ง [XAMPP](https://www.apachefriends.org/) แล้วกด Start ที่ **Apache** และ **MySQL**
-2. คัดลอกโฟลเดอร์ `project web` ไปไว้ใน `C:\xampp\htdocs\` แล้วเปลี่ยนชื่อให้ไม่มีช่องว่าง เช่น `C:\xampp\htdocs\lmshirtshop`
-3. สร้างโฟลเดอร์สำหรับรูปสินค้าและสลิป : `uploads\products` และ `uploads\slips` ในโฟลเดอร์นั้น (Docker สร้างให้เอง แต่ XAMPP ต้องสร้างเอง)
-4. เปิด http://localhost/phpmyadmin → แท็บ **Import** → เลือก `shirtshop_xampp.sql` → **Go**
-   ไฟล์จะสร้างฐานข้อมูล `shopdb` ให้เอง ไม่ต้องสร้างก่อน
-5. เปิด http://localhost/lmshirtshop/
-
-ไม่ต้องแก้ไฟล์ตั้งค่า : `includes/connect.php` อ่านค่าจาก environment ของ Docker และถ้าไม่มีจะใช้ค่าตั้งต้นของ XAMPP (`localhost`, ผู้ใช้ `root`, ไม่มีรหัสผ่าน)
-
-**ก่อนเดโมทุกครั้ง** ให้ import `shirtshop_xampp.sql` ใหม่ วันที่ของออเดอร์ โปรโมชั่น และคูปองจะเลื่อนให้ "วันนี้" ตรงกับวันที่ import แดชบอร์ดและรายงานจึงมีข้อมูลล่าสุดเสมอ
-
-## <img src=".github/readme/icons/chart.svg" height="22" alt=""> ฐานข้อมูล
 
 13 ตาราง : `users` `addresses` `categories` `products` `product_variants` `product_images` `promotions` `promotion_tiers` `promotion_bundle_items` `coupons` `orders` `order_items` `stock_movements`
 
