@@ -1,4 +1,4 @@
-<img width="1750" height="102" alt="image" src="https://github.com/user-attachments/assets/831058c1-86ac-4e4d-8c2a-163edd7c4794" /># <img src=".github/readme/icons/shirt.svg" height="30" alt=""> LMShirtShop : ร้านขายเสื้อออนไลน์
+# <img src=".github/readme/icons/shirt.svg" height="30" alt=""> LMShirtShop : ร้านขายเสื้อออนไลน์
 เป็นฉบับปรับปรุงขึ้น Host 202.44.40.193 โดยปรับ connect ให้เข้ากับ mysql ของ Host และปรับสิทธ์ในการเข้าถึง folder upload ใหม่เป็น 777 เพื่อความสะดวก (RWX)
 ```
 WebDev/
