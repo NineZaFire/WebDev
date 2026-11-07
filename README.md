@@ -8,6 +8,7 @@
 ## <img src=".github/readme/icons/next.svg" height="22" alt=""> ลองเล่นออนไลน์
 
 **https://ninezafire.github.io/WebDev/** → กด "เริ่มลองเล่นเว็บ"
+**http://202.44.40.193/~cs6716125/webdev/projectWebdev/** หรือเริ่มลองเล่นเว็บที่นี่
 
 GitHub Pages รัน PHP เองไม่ได้ จึงใช้ PHP 8.3 แบบ WebAssembly รันในเบราว์เซอร์ และใช้ SQLite แทน MySQL (ข้อมูลตั้งต้นชุดเดียวกับ `shirtshop_xampp.sql`)
 ทุกอย่างทำงานเหมือนตัวจริง ข้อมูลที่เพิ่มหรือแก้เก็บอยู่ในเบราว์เซอร์ของแต่ละคน ครั้งแรกต้องโหลดประมาณ 18 MB
@@ -144,3 +145,4 @@ WebDev/
 
 จัดทำเพื่อการศึกษาในรายวิชา 040613411 Web Development
 ไลบรารีที่ใช้ : [Chart.js](https://www.chartjs.org/) (MIT), qrcode-generator โดย Kazuhiko Arase (MIT), ฟอนต์ IBM Plex Sans Thai (SIL OFL) และในเวอร์ชัน GitHub Pages ใช้ [php-wasm](https://github.com/seanmorris/php-wasm) (Apache-2.0)
+รูปภาพประกอบ : [pixa](https://pixabay.com/th/) (CC0),
